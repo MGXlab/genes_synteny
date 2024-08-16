@@ -10,27 +10,27 @@ library(ggtree)     # plot phylogenetic trees
 # Open input files ########################################################################
 
 #Open file with object containing genome's lengths, bin/species IDs and sequence/contig IDs
-alv_seqs <- read.csv("objects/alv_seqs.csv")
+alv_seqs <- read.csv("objects/alv_seqs3.csv")
 
 #Convert seq_id to strings and object to tibble object type
 alv_seqs$seq_id <- as.character(alv_seqs$seq_id)
 alv_seqs <- as_tibble(alv_seqs)
 
 #Open file with object containing gene names and coordinates
-alv_genes <- read.csv("objects/alv_genes.csv") 
+alv_genes <- read.csv("objects/alv_genes3.csv") 
 #Convert bin_id to strings and object to tibble object type
 alv_genes$seq_id <- as.character(alv_genes$seq_id)
 alv_genes <- as_tibble(alv_genes)
 
 #Open file with object containing homologies between genomes
-alv_ava <- read.csv("objects/alv_ava_blast2.csv")
+alv_ava <- read.csv("objects/alv_ava2.csv")
 #Convert columns to strings and object to tibble object type
 alv_ava$seq_id <- as.character(alv_ava$seq_id)
 alv_ava$seq_id2 <- as.character(alv_ava$seq_id2)
 alv_ava <- as_tibble(alv_ava)
 
 #Open file with object containing homologies between ortholog proteins
-alv_prot_ava <- read.csv("objects/alv_prot_ava_blast2.csv") 
+alv_prot_ava <- read.csv("objects/alv_prot_ava2.csv") 
 #Convert object to tibble object type
 alv_prot_ava <- as_tibble(alv_prot_ava)
 
