@@ -1,0 +1,7 @@
+bin_id,seq_id,start,end,strand,feat_id,name
+ZONMW-30,4,0,3491,+,operon_ZONMW-30,operon
+ZONMW-20,10,2483,5190,+,operon_ZONMW-20,operon
+UW101,1,0,7516,+,operon_UW101,operon
+IR1,856,0,6679,+,operon_IR1,operon
+HI1,1,6181,10345,+,operon_HI1,operon
+DSM1208,1,3318,7170,+,operon_DSM1208,operon
