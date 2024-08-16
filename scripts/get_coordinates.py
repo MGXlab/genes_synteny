@@ -11,7 +11,7 @@ prodigal_gff_file = sys.argv[2]
 
 # Extract the part before '.blastoutbest' from the blastoutbest file path
 bacteria_name = blastoutbest_file.split('.blastoutbest')[0]
-bacteria_name = bacteria_name.split('genomes/')[1]
+bacteria_name = bacteria_name.split('proteins/')[1]
 
 # Step 1: Read the blastoutbest file and store mappings
 blastoutbest_data = {}
