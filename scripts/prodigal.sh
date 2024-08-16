@@ -12,6 +12,6 @@ for file in genomes/*.fna; do
   echo "$base_name"
 
   # Run Prodigal with the specified options
-  /home/groups/VEO/tools/prodigal/v2.6.3/prodigal -i "$file" -o proteins/"${base_name}.gff" -f gff -a proteins/"${base_name}.faa"
+  /home/groups/VEO/tools/prodigal/v2.6.3/prodigal -i "$file" -o proteins/"${base_name}.gff" -f gff -a proteins/"${base_name}.fasta"
 done
 
