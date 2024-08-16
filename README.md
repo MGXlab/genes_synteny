@@ -3,7 +3,7 @@
 This repository contains a tutorial and scripts to create a gene synteny and homology figure for a set of species. 
 
 <p align="center">
-  <img src="synteny.png" alt="Alt Text" width="550"/>
+  <img src="synteny.png" alt="Alt Text" width="850"/>
 </p>
 
 # Required software
