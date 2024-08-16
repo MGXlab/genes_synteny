@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#Create proteins file
+mkdir proteins
+
 # Loop over each .fna file 
 for file in genomes/*.fna; do
 
