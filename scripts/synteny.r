@@ -64,7 +64,7 @@ ggsave("figures/synteny.pdf", plot, width = 8, height = 5, units = "in", dpi = 3
 # Plot taxonomy tree ######################################################################
 
 #Open file containing the taxonomy tree in Newick format
-alv_tree <- read.tree("files/species.treefile")
+alv_tree <- read.tree("16S_genes/species.treefile")
 t <- ggplot(alv_tree, aes(x, y)) + geom_tree() + theme_tree() +   hexpand(.35)+ geom_tiplab(align=T, size=4, linesize=.5) 
 
 #Save tree figure
