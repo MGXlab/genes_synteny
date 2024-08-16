@@ -32,10 +32,25 @@ For final touches:
 
 # Synteny and homology figure
 
-As input, you should have FASTA files with genomes (as the files in genomes/ in this repository). If you already have proteins in FASTA and BED or GFF formats, you can skip the next steps. If you do not have proteins yet, predict genes with Prodigal with the script ```scripts/prodigal.sh```. If you already have proteins of interest, you can BLAST them to other genomes's gene predictions to get the homology using script ```scripts/blast.sh```. After you have the coordinates of the proteins of interest produced by BLAST, you can adapt their format to be compatible to gggenomes using script ```scripts/get_coordinates.py``` (the object will be a file called alv_genes.csv). The usage of this script follows below with an example file given in this repository. You can run this script for all files within a folder using script ```scripts/get_coordinates.sh``` as below.
+To start, log in to draco, and allocate a node to work on, clone this repository and move to the repository folder:
 
 ```
+ssh <fsu_id>@login2.draco.uni-jena.de
+salloc --partition=standard 
+git clone https://github.com/MGXlab/genes_synteny.git
+cd genes_synteny
+```
+
+As input, you should have FASTA files with genomes (as the files in genomes/ in this repository). If you already have proteins in FASTA and BED or GFF formats, you can skip the next steps. If you do not have proteins yet, predict genes with Prodigal with the script ```scripts/prodigal.sh```, as indicated below. If you already have proteins of interest, you can BLAST them to other genomes's gene predictions to get the homology using script ```scripts/blast.sh```. After you have the coordinates of the proteins of interest produced by BLAST, you can adapt their format to be compatible to gggenomes using script ```scripts/get_coordinates.py``` (the object will be a file called alv_genes.csv). The usage of this script follows below with an example file given in this repository. You can run this script for all files within a folder using script ```scripts/get_coordinates.sh``` as below.
+
+```
+#Run Prodigal
+bash scripts/prodigal.sh
+#Run BLAST
+
+#Optional: run get_coordinates.py just for one file
 python3 scripts/get_coordinates.py genomes/ZONMW-30.blastoutbest genomes/ZONMW-30.gff > alv_genes_SPECIES.csv
+#Run get_coordinates.py for all files
 bash scripts/get_coordinates.sh > alv_genes_ALL_SPECIES.csv
 ```
 
