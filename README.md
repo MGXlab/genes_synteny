@@ -41,7 +41,32 @@ git clone https://github.com/MGXlab/genes_synteny.git
 cd genes_synteny
 ```
 
-As input, you should have FASTA files with genomes (as the files in genomes/ in this repository). If you already have proteins in FASTA and BED or GFF formats, you can skip the next steps. If you do not have proteins yet, predict genes with Prodigal with the script ```scripts/prodigal.sh```, as indicated below. If you already have proteins of interest, you can BLAST them to other genomes's gene predictions to get the homology using script ```scripts/blast.sh```. After you have the coordinates of the proteins of interest produced by BLAST, you can adapt their format to be compatible to gggenomes using script ```scripts/get_coordinates.py``` (the object will be a file called alv_genes.csv). The usage of this script follows below with an example file given in this repository. You can run this script for all files within a folder using script ```scripts/get_coordinates.sh``` as below.
+As input, you should have FASTA files with genomes (as the files in genomes/ in this repository). If you already have proteins in FASTA and BED or GFF formats, you can skip the next steps. If you do not have proteins yet, predict genes with Prodigal with the script ```scripts/prodigal.sh```, as indicated below. If you already have proteins of interest, you can BLAST them to other genomes's gene predictions to get the homology and/or coordinates using script ```scripts/blast.sh```.   
+
+```
+#Run Prodigal
+bash scripts/prodigal.sh
+#Run BLAST
+bash scripts/blast.sh
+```
+
+After you get the output of BLAST (files named proteins/SPECIES.blastout), select the proteins of interest and name them proteins/SPECIES.blastoutbest. As an example, below follows the content of all BLAST hits of protein moeA (from file proteins/UW101_proteins_of_interest.fasta) against prodigal's predicted proteins for species UW101 (from genomes/UW101.fasta):
+
+```
+moeA    moeA    100.000 390     0       0       1       390     1       390     0.0     787
+moeA    moaC2   21.642  134     87      3       169     291     148     274     5.65e-05        32.7
+moeA    moaC2   31.250  32      20      1       119     148     188     219     0.62    20.0
+moeA    moeZ    23.148  108     75      3       131     238     12      111     0.38    20.4
+moeA    sumT    44.444  18      10      0       270     287     90      107     0.49    20.0
+```
+
+Selecting the best hit by hand, we have:
+
+```
+moeA    moeA    100.000 390     0       0       1       390     1       390     0.0     787
+```
+
+If we do this for all proteins of interest, you will end up with file proteins/UW101.blastoutbest. The, you can adapt their format to be compatible to gggenomes using script ```scripts/get_coordinates.py``` (the output object will be a file called alv_genes.csv). The usage of this script follows below with an example file given in this repository. You can run this script for all files within a folder using script ```scripts/get_coordinates.sh``` as below.
 
 ```
 #Run Prodigal
