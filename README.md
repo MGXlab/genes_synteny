@@ -50,21 +50,21 @@ cd genes_synteny
 
 As input, you should have FASTA files with genomes (as the files in ```genomes``` in this repository). If you already have proteins in FASTA and coordinates in BED or GFF formats, you can skip the next steps.   
 
-If you do not have protein sequences and coordinates yet, predict genes with Prodigal with script ```scripts/prodigal.sh```, as indicated below.    
+If you do not have protein sequences and coordinates yet, predict genes with Prodigal with script ```scripts/prodigal.sh```, as indicated below. As output, you will obtain files named ```proteins/<SPECIES_ID>.fasta```.    
 
 ```
 #Run Prodigal
 bash scripts/prodigal.sh
 ```
 
-If you already have proteins of interest (as the files in ```proteins/SPECIES_proteins_of_interest.fasta```), you can BLAST them against Prodigal's protein predictions to get their coordinates using script ```scripts/blast.sh```.       
+If you already have proteins of interest (as the files in ```proteins/<SPECIES_ID>_proteins_of_interest.fasta```), you can BLAST them against Prodigal's protein predictions to get their coordinates using script ```scripts/blast.sh```. You will obtain as output files named ```proteins/<SPECIES_ID>_proteins_of_interest.blastout```.      
 
 ```
 #Run BLAST
 bash scripts/blast.sh
 ```
 
-After you obtain the output of ```scripts/blast.sh``` (files named ```proteins/SPECIES.blastout```), select the proteins of interest and name them ```proteins/SPECIES.blastoutbest```. As an example, see below the content of all BLAST hits of protein moeA (from file ```proteins/UW101_proteins_of_interest.fasta```) against Prodigal's predicted proteins for species UW101 (from ```genomes/UW101.fasta```):
+Afterwads, select the proteins of interest and name them ```proteins/SPECIES.blastoutbest```. As an example, see below the content of all BLAST hits of protein moeA from file ```proteins/UW101_proteins_of_interest.fasta``` against Prodigal's predicted proteins for species UW101 (from ```genomes/UW101.fasta```):
 
 ```
 moeA    moeA    100.000 390     0       0       1       390     1       390     0.0     787
