@@ -83,7 +83,9 @@ Selecting the best hit by hand, you have:
 moeA    1_4772  100.000 390     0       0       1       390     1       390 0.0      787
 ```
 
-If you do this for all proteins of interest, you will end up with file ```proteins/UW101.blastoutbest``` (which is given as an example in this repository). Then, you can adapt their format to be compatible to gggenomes using script ```scripts/get_coordinates.py``` (the output will be a file called ```objects/alv_genes_SPECIES.csv```). The usage of this script follows below with an example file given in this repository. You can run this script for all files within a folder using script ```scripts/get_coordinates.sh``` as below.
+If you do this for all proteins of interest, you will end up with files ```proteins/<SPECIES_ID>.blastoutbest``` (which are given as example in this repository).  
+
+Next, you should adapt their format to be compatible to gggenomes using script ```scripts/get_coordinates.py``` (the output will be a file called ```objects/alv_genes_SPECIES.csv```). The usage of this script follows below with an example file given in this repository. You can run this script for all files within a folder using script ```scripts/get_coordinates.sh``` as below.
 
 ```
 #Optional to learn the usage of the script: run get_coordinates.py just for one file
