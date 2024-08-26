@@ -1,6 +1,8 @@
 # Visualizing Synteny and Homology of Genes
 
-This repository contains a tutorial and scripts to create a gene synteny and homology figure for a set of species. 
+This repository contains a tutorial and scripts to create a gene synteny and homology figure for a set of species. Additionally, it contains a tutorial to create a phylogenetic tree.   
+
+Figures 1 b and c of the paper of Escobar Doncel and collaborators can be reproduced following this tutorial. The input files are FASTA genomes in folder ```genomes``` and proteins of interest in folder ```proteins```. They contain data for 8 bacterial species.   
 
 <p align="center">
   <img src="figures/synteny.png" alt="Alt Text" width="850"/>
@@ -8,7 +10,7 @@ This repository contains a tutorial and scripts to create a gene synteny and hom
 
 # Required software
 
-If you have access to the draco high-performance cluster and are part of the VEO group, you only need to install gggenomes and Rstudio locally in your computer for creating the synteny and homology figure. Additionally, Inkscape is a good option to do final touches, which you could also install locally. The other software are already installed in draco and can be used as mentioned in this tutorial. In other cases, you should install the following software as well according to the developer's recommendations:   
+If you have access to the draco high-performance cluster and are part of the VEO group, you only need to install gggenomes and Rstudio locally in your computer for creating the synteny and homology figure. Otherwise, install the software mentioned below according to the developer's recommendations and adapt the command lines to your needs. Inkscape is a good option to do final touches to your figure if needed and should also be installed locally. Other software are already installed in draco and can be used as mentioned in this tutorial.   
 
 For synteny and homology figure:  
 
@@ -32,7 +34,7 @@ For final touches:
 
 # Synteny and homology figure
 
-To start, log in to draco, and allocate a node to work on, clone this repository and move to the repository folder:
+To start, log in to draco, if you are part of the VEO group, and allocate a node to work on. If you are not part of the VEO group, adapt the commands to your needs. Clone this repository and move to the repository folder:
 
 ```
 ssh <fsu_id>@login2.draco.uni-jena.de
@@ -41,7 +43,9 @@ git clone https://github.com/MGXlab/genes_synteny.git
 cd genes_synteny
 ```
 
-As input, you should have FASTA files with genomes (as the files in genomes/ in this repository). If you already have proteins in FASTA and BED or GFF formats, you can skip the next steps. If you do not have proteins yet, predict genes with Prodigal with the script ```scripts/prodigal.sh```, as indicated below. If you already have proteins of interest (as the examples given in this repository proteins/SPECIES_proteins_of_interest.fasta), you can BLAST them to other genomes's gene predictions to get the homology and/or coordinates using script ```scripts/blast.sh```.   
+As input, you should have FASTA files with genomes (as the files in ```genomes``` in this repository). If you already have proteins in FASTA and coordinates in BED or GFF formats, you can skip the next steps. If you do not have protein sequences and coordinates yet, predict genes with Prodigal with script ```scripts/prodigal.sh```, as indicated below.   
+
+If you already have proteins of interest (as the files in ```proteins/SPECIES_proteins_of_interest.fasta```), you can BLAST them to Prodigal's protein predictions to get the coordinates using script ```scripts/blast.sh```.   
 
 ```
 #Run Prodigal
