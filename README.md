@@ -34,27 +34,37 @@ For final touches:
 
 # Synteny and homology figure
 
-To start, log in to draco, if you are part of the VEO group, and allocate a node to work on. If you are not part of the VEO group, adapt the commands to your needs. Clone this repository and move to the repository folder:
+To start, log in to draco, if you are part of the VEO group, and allocate a node to work on. If you are not part of the VEO group, adapt the commands to your needs.   
 
 ```
 ssh <fsu_id>@login2.draco.uni-jena.de
 salloc --partition=standard 
+```
+
+Clone this repository and move to the repository folder:
+
+```
 git clone https://github.com/MGXlab/genes_synteny.git
 cd genes_synteny
 ```
 
-As input, you should have FASTA files with genomes (as the files in ```genomes``` in this repository). If you already have proteins in FASTA and coordinates in BED or GFF formats, you can skip the next steps. If you do not have protein sequences and coordinates yet, predict genes with Prodigal with script ```scripts/prodigal.sh```, as indicated below.   
+As input, you should have FASTA files with genomes (as the files in ```genomes``` in this repository). If you already have proteins in FASTA and coordinates in BED or GFF formats, you can skip the next steps.   
 
-If you already have proteins of interest (as the files in ```proteins/SPECIES_proteins_of_interest.fasta```), you can BLAST them to Prodigal's protein predictions to get the coordinates using script ```scripts/blast.sh```.   
+If you do not have protein sequences and coordinates yet, predict genes with Prodigal with script ```scripts/prodigal.sh```, as indicated below.    
 
 ```
 #Run Prodigal
 bash scripts/prodigal.sh
+```
+
+If you already have proteins of interest (as the files in ```proteins/SPECIES_proteins_of_interest.fasta```), you can BLAST them against Prodigal's protein predictions to get their coordinates using script ```scripts/blast.sh```.       
+
+```
 #Run BLAST
 bash scripts/blast.sh
 ```
 
-After you get the output of BLAST (files named proteins/SPECIES.blastout), select the proteins of interest and name them proteins/SPECIES.blastoutbest. As an example, see below the content of all BLAST hits of protein moeA (from file proteins/UW101_proteins_of_interest.fasta) against prodigal's predicted proteins for species UW101 (from genomes/UW101.fasta):
+After you obtain the output of ```scripts/blast.sh``` (files named ```proteins/SPECIES.blastout```), select the proteins of interest and name them ```proteins/SPECIES.blastoutbest```. As an example, see below the content of all BLAST hits of protein moeA (from file ```proteins/UW101_proteins_of_interest.fasta```) against Prodigal's predicted proteins for species UW101 (from ```genomes/UW101.fasta```):
 
 ```
 moeA    moeA    100.000 390     0       0       1       390     1       390     0.0     787
@@ -64,22 +74,22 @@ moeA    moeZ    23.148  108     75      3       131     238     12      111     
 moeA    sumT    44.444  18      10      0       270     287     90      107     0.49    20.0
 ```
 
-Selecting the best hit by hand, we have:
+Selecting the best hit by hand, you have:
 
 ```
 moeA    moeA    100.000 390     0       0       1       390     1       390     0.0     787
 ```
 
-If we do this for all proteins of interest, you will end up with file proteins/UW101.blastoutbest (which is given as an example in this repository). Then, you can adapt their format to be compatible to gggenomes using script ```scripts/get_coordinates.py``` (the output object will be a file called objects/alv_genes_SPECIES.csv). The usage of this script follows below with an example file given in this repository. You can run this script for all files within a folder using script ```scripts/get_coordinates.sh``` as below.
+If you do this for all proteins of interest, you will end up with file ```proteins/UW101.blastoutbest``` (which is given as an example in this repository). Then, you can adapt their format to be compatible to gggenomes using script ```scripts/get_coordinates.py``` (the output will be a file called ```objects/alv_genes_SPECIES.csv```). The usage of this script follows below with an example file given in this repository. You can run this script for all files within a folder using script ```scripts/get_coordinates.sh``` as below.
 
 ```
-#Optional: run get_coordinates.py just for one file
+#Optional to learn the usage of the script: run get_coordinates.py just for one file
 python3 scripts/get_coordinates.py proteins/UW101.blastoutbest proteins/UW101.gff > alv_genes_UW101.csv
 #Run get_coordinates.py for all files
 bash scripts/get_coordinates.sh > objects/alv_genes1.csv
 ```
 
-After this point, you can work in your local computer. You do not need draco anymore. Clone the repository and move to the scripts folder. Then open jupyter notebook ```get_objects.ipynb```.   
+After this point, you produced file ```objects/alv_genes1.csv```, which is all you need to work locally. Log out of draco and work locally. Clone the repository locally and move to the ```scripts``` folder. Next, open jupyter notebook ```get_objects.ipynb```.   
 
 ```
 git clone https://github.com/MGXlab/genes_synteny.git
@@ -88,16 +98,16 @@ jupyter notebook
 #After the browser opens, select file "get_objects.ipynb"
 ```
 
-Run the cells one by one to produce the objects necessary to gggenomes (they are also given as example in this repository):   
+Run the cells of the notebook one by one to produce the objects required by gggenomes (they are also given as example in this repository, in folder ```objects```):   
 
-- objects/alv_seqs3.csv: contains sizes of genomes
+- objects/alv_seqs3.csv: contains lengths of genomes
 - objects/alv_ava2.csv: contains homologies between genomes
 - objects/alv_prot_ava2.csv: contains homologies between ortholog proteins
-- objects/alv_genes3.csv: contains the same genes as bjects/alv_genes1.csv, but with shortened coordinates and spacers (if genes are too far apart) for better visualization  
+- objects/alv_genes3.csv: contains the same genes of ```objects/alv_genes1.csv```, but with shortened coordinates and spacers (if genes are too far apart) for better visualization  
 
-The object alv_operons.csv is optional for gggenomes and indicates operon coordinates. It was written by hand for the files given in this repository based on biological knowledge of the proteins related to the phenotype of interest.   
+Object ```alv_operons.csv``` is optional for gggenomes and indicates operon coordinates. It was written by hand for the files given in this repository.    
 
-After you create all objects, you can visualize them with gggenomes in RStudio using script ```scripts/synteny.r```. The output will be figure figures/synteny.pdf and figures/synteny_tree.jpg.   
+After you create the objects, you can visualize them with gggenomes in RStudio using script ```scripts/synteny.r```. The output will be figures ```figures/synteny.pdf``` and ```figures/synteny_tree.jpg```.   
 
 # Taxonomy tree
 
