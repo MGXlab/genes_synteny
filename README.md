@@ -50,14 +50,14 @@ cd genes_synteny
 
 As input, you should have FASTA files with genomes (as the files in ```genomes``` in this repository). If you already have proteins in FASTA and coordinates in BED or GFF formats, you can skip the next steps.   
 
-If you do not have protein sequences and coordinates yet, predict genes with Prodigal with script ```scripts/prodigal.sh```, as indicated below. As output, you will obtain files named ```proteins/<SPECIES_ID>.fasta```.    
+If you do not have protein sequences and coordinates yet, predict genes with Prodigal with script ```scripts/prodigal.sh```, as indicated below. As output, you will obtain files named ```proteins/<SPECIES_ID>.fasta``` and ```proteins/<SPECIES_ID>.gff```.    
 
 ```
 #Run Prodigal
 bash scripts/prodigal.sh
 ```
 
-If you already have proteins of interest (as the files in ```proteins/<SPECIES_ID>_proteins_of_interest.fasta```), you can BLAST them against Prodigal's protein predictions to get their coordinates using script ```scripts/blast.sh```. You will obtain as output files named ```proteins/<SPECIES_ID>_proteins_of_interest.blastout```.      
+If you already have proteins of interest (as the files in ```proteins/<SPECIES_ID>_proteins_of_interest.fasta```) and need their coordinates, BLAST them against Prodigal's protein predictions with script ```scripts/blast.sh```. You will obtain as output files named ```proteins/<SPECIES_ID>_proteins_of_interest.blastout```.      
 
 ```
 #Run BLAST
