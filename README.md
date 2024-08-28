@@ -112,6 +112,12 @@ Run the cells of the notebook one by one to produce the objects required by ggge
 
 Object ```alv_operons.csv``` is optional for gggenomes and indicates operon coordinates. It was written by hand for the files given in this repository.    
 
+To improve visualization of the synteny, the jupyter notebook will shorten gene coordinates if genes are too far apart. Large spaces (defined by ```max_dist > 5000 bp```) will be removed and a ```z_spacer``` element will be added (as in the figure below). Specifically, if the end of the first gene and the start of the second gene are longer than 5 kb, a spacer will be added. Spacers can be substituted for dots or slashes in a program like InkScape.    
+
+<p align="center">
+  <img src="figures/synteny.pdf" alt="Alt Text" width="850"/>
+</p>
+
 Next, move back to the main folder and list the files in folder ```objects``` to make sure they were successfully created.
 
 ```
@@ -119,7 +125,7 @@ cd ..
 ls -lh objects
 ```
 
-Now you can visualize the synteny and homology with gggenomes in RStudio using script ```scripts/synteny.r```. The output will be figures ```figures/synteny.pdf``` and ```figures/synteny_tree.jpg```. To create the figures, open the R script in RStudio and run the commands.  
+Now you can visualize the synteny and homology with gggenomes in RStudio using script ```scripts/synteny.r```. The output will be figures ```figures/synteny.pdf``` (the figure above) and ```figures/synteny_tree.jpg```. To create the figures, open the R script in RStudio and run the commands.  
 
 # Taxonomy tree
 
