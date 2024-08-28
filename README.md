@@ -112,6 +112,13 @@ Run the cells of the notebook one by one to produce the objects required by ggge
 
 Object ```alv_operons.csv``` is optional for gggenomes and indicates operon coordinates. It was written by hand for the files given in this repository.    
 
+Next, move back to the main folder and list the files in folder ```objects``` to make sure they were successfully created.
+
+```
+cd ..
+ls -lh objects
+```
+
 After you create the objects, you can visualize them with gggenomes in RStudio using script ```scripts/synteny.r```. The output will be figures ```figures/synteny.pdf``` and ```figures/synteny_tree.jpg```.   
 
 # Taxonomy tree
