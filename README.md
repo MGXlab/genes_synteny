@@ -115,7 +115,7 @@ Object ```alv_operons.csv``` is optional for gggenomes and indicates operon coor
 To improve visualization of the synteny, the jupyter notebook will shorten gene coordinates if genes are too far apart. Large spaces (defined by ```max_dist > 5000 bp```) will be removed and a ```z_spacer``` element will be added (as in the figure below). Specifically, if the end of the first gene and the start of the second gene are longer than 5 kb, a spacer will be added. Spacers can be substituted for dots or slashes in a program like InkScape.    
 
 <p align="center">
-  <img src="figures/synteny_with_spacers.png" alt="Alt Text" width="850"/>
+  <img src="figures/synteny_with_spacers.png" alt="Alt Text" width="550"/>
 </p>
 
 Next, move back to the main folder and list the files in folder ```objects``` to make sure they were successfully created.
