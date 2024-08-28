@@ -119,7 +119,7 @@ cd ..
 ls -lh objects
 ```
 
-After you create the objects, you can visualize them with gggenomes in RStudio using script ```scripts/synteny.r```. The output will be figures ```figures/synteny.pdf``` and ```figures/synteny_tree.jpg```.   
+Now you can visualize the synteny and homology with gggenomes in RStudio using script ```scripts/synteny.r```. The output will be figures ```figures/synteny.pdf``` and ```figures/synteny_tree.jpg```. To create the figures, open the R script in RStudio and run the commands.  
 
 # Taxonomy tree
 
