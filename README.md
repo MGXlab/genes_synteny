@@ -185,6 +185,6 @@ The next step is to align the 16S rRNA genes with MAFFT and produce the phylogen
 /home/groups/VEO/tools/iqtree/1.6.12/bin/iqtree -s 16S_gene/all_species_16S.alg
 ```
 
-iqtree produces a phylogenetic tree in Newick format (```16S_genes/species.treefile```, given as an example in this repository), which you could visualize in RStudio (script ```scripts/synteny.r```) or alternatively in the online tool [iToL](https://itol.embl.de/) (click tab on the top "Upload" and input your Newick file).   
+From the command above, iqtree produces a phylogenetic tree in Newick format named ```16S_genes/all_species_16S.alg.treefile``` (file ```16S_genes/species.treefile``` is given as an example in this repository). You can visualize the tree in RStudio (script ```scripts/synteny.r```) or alternatively in the online tool [iToL](https://itol.embl.de/) (click tab on the top "Upload" and input your Newick file).   
 
 Any final touches to the figure can be done using Inkscape.  
