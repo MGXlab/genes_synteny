@@ -41,7 +41,7 @@ ssh <fsu_id>@login2.draco.uni-jena.de
 salloc --partition=standard 
 ```
 
-If you are not part of the VEO group, adapt the following scripts to your needs: ```prodigal.sh```, ```barrnap.sh```, ```blast.sh``` and ```iqtree.sbatch```. As an example, below is the content of ```prodigal.sh``` (all located in folder ```scripts```). You only have to change the command line to run Prodigal. All other lines can remain the same and will work in your system.
+If you are not part of the VEO group, adapt the following scripts to your needs: ```prodigal.sh``` and ```blast.sh```. As an example, below is the content of ```prodigal.sh``` (all located in folder ```scripts```). You only have to change the command line to run Prodigal. All other lines can remain the same and will work in your system.
 
 ```
 #!/bin/bash
@@ -59,9 +59,7 @@ for file in genomes/*.fna; do
 done
 ```
 
-
-
-Clone this repository and move to the repository folder:
+Next, clone this repository and move to the repository folder:
 
 ```
 git clone https://github.com/MGXlab/genes_synteny.git
@@ -147,22 +145,18 @@ Now you can visualize the synteny and homology with gggenomes in RStudio using s
   <img src="figures/synteny_with_spacers.png" alt="Alt Text" width="550"/>
 </p>
 
-# Taxonomy tree
+# Phylogenetic tree
 
-First, log in to draco, if you are part of the VEO group, and allocate a node to work on. If you are not part of the VEO group, adapt the commands to your needs.   
-```
-ssh <fsu_id>@login2.draco.uni-jena.de
-salloc --partition=standard 
-```
+As explained above in section "Synteny and homology figure", log in to draco, if you are part of the VEO group, and allocate a node to work on. If you are not part of the VEO group, adapt scripts ```barrnap.sh``` and ```iqtree.sbatch``` to your needs.   
 
-Clone this repository, if you have not done this yet, and move to the repository folder:
+Clone this repository, if you have not done this yet, and move to the repository folder:   
 
 ```
 git clone https://github.com/MGXlab/genes_synteny.git
 cd genes_synteny
 ```
 
-To create a taxonomy tree of your species of interest, you start with extracting 16S rRNA genes from the genomes of the bacteria using Barrnap. This can be done with script ```scripts/barrnap.sh```, which also uses BEDtools getfasta to extract the FASTA sequences (the output of Barrnap is GFF files with coordinates):
+To create a phylogenetic tree of your species of interest, start with extracting 16S rRNA genes from the genomes of the bacteria using Barrnap. This can be done with script ```scripts/barrnap.sh```, which also uses BEDtools getfasta to extract the FASTA sequences (the output of Barrnap is GFF files with coordinates):
 
 ```
 #Run Barrnap for all files
