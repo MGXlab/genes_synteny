@@ -143,7 +143,9 @@ Now you can visualize the synteny and homology with gggenomes in RStudio using s
 
 <p align="center">
   <img src="figures/synteny_with_spacers.png" alt="Alt Text" width="550"/>
-</p>
+</p>  
+
+Any final touches to the figure can be done using Inkscape.  
 
 # Phylogenetic tree
 
@@ -159,11 +161,11 @@ cd genes_synteny
 To create a phylogenetic tree of your species of interest, start with extracting 16S rRNA genes from the genomes of the bacteria using Barrnap. This can be done with script ```scripts/barrnap.sh```, which uses as input all .fna files of folder ```genomes/*fna```. It outputs GFF and FASTA files such as ```16S_genes/UW101.gff``` and ```16S_genes/UW101_16S.fasta```. BEDtools getfasta is used after Barrnap to extract the FASTA sequences (the output of Barrnap is GFF files with coordinates):
 
 ```
-#Run Barrnap and BED tools getfasta for all genomes and get GFF and FASTA files
+#Run Barrnap and BEDtools getfasta for all genomes to create GFF and FASTA files
 bash scripts/barrnap.sh
 ```
 
-It may be that more than one 16S rRNA gene is predicted in the GFF, so choose one copy per species for the subsequent steps. Chose the best candidate based on the GFF file and keep only this sequence in the FASTA file. Afterwards, save the chosen copies in one file named ```16S_genes/all_species_16S.fasta``` (this file is given as an example in this repository).  
+It may be that more than one 16S rRNA gene is predicted in the GFF, so choose one copy per species for the subsequent steps. Choose the best candidate based on the GFF file and keep only this sequence in the FASTA file. Afterwards, save the chosen copies in one file named ```16S_genes/all_species_16S.fasta``` (this file is given as an example in this repository).  
 
 ```
 #Inspect the GFF coordinates, chose one copy of the 16S rRNA per species
@@ -177,10 +179,10 @@ cat 16S_genes/*_16S.fasta > 16S_genes/all_species_16S.fasta
 The next step is to align the 16S rRNA genes with MAFFT and produce the phylogenetic tree with iqtree using the commands below (adapt them if needed). 
 
 ```
-/home/groups/VEO/tools/mafft/v7.505/bin/mafft all_16S.fasta > all_16S.alg
+/home/groups/VEO/tools/mafft/v7.505/bin/mafft 16S_genes/all_16S.fasta > 16S_genes/all_16S.alg
 /home/groups/VEO/tools/iqtree/1.6.12/bin/iqtree -s 16S_gene/all_16S.alg
 ```
 
-iqtree produces a taxonomy tree in Newick format (16S_genes/species.treefile), which you could visualize in RStudio (script ```scripts/synteny.r```) or alternatively in the online tool [iToL](https://itol.embl.de/).   
+iqtree produces a taxonomy tree in Newick format (```16S_genes/species.treefile```), which you could visualize in RStudio (script ```scripts/synteny.r```) or alternatively in the online tool [iToL](https://itol.embl.de/) (click tab on the top "Upload" and input your Newick file).   
 
-Any final touches to the figures can be done using Inkscape.  
+Any final touches to the figure can be done using Inkscape.  
