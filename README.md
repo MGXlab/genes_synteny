@@ -156,18 +156,20 @@ git clone https://github.com/MGXlab/genes_synteny.git
 cd genes_synteny
 ```
 
-To create a phylogenetic tree of your species of interest, start with extracting 16S rRNA genes from the genomes of the bacteria using Barrnap. This can be done with script ```scripts/barrnap.sh```, which uses as input all .fna files of folder ```genomes/*fna```. It also uses BEDtools getfasta to extract the FASTA sequences (the output of Barrnap is GFF files with coordinates):
+To create a phylogenetic tree of your species of interest, start with extracting 16S rRNA genes from the genomes of the bacteria using Barrnap. This can be done with script ```scripts/barrnap.sh```, which uses as input all .fna files of folder ```genomes/*fna```. It outputs GFF and FASTA files such as ```16S_genes/UW101.gff``` and ```16S_genes/UW101_16S.fasta```. It also uses BEDtools getfasta to extract the FASTA sequences (the output of Barrnap is GFF files with coordinates):
 
 ```
-#Run Barrnap for all files
+#Run Barrnap for all files and get GFF and FASTA files
 bash scripts/barrnap.sh
-#Change files by hand to choose one copy of each species' 16S gene. Example below: open and modify files with vim
+```
+
+It may be that more than one 16S rRNA gene is predicted in the GFF, so choose one copy per species for the subsequent steps. Chose the best candidate based on the GFF file and keep only this sequence in the FASTA file
+Save the chosen copies in one file named ```16S_genes/all_species_16S.fasta``` (example command below). An example file is given in this repository.  
+
+```
+cat 16S_genes/*gff
+#Change files by hand to choose one copy of each species' 16S gene based on results of the GFF files. Example below: open and modify files with vim
 vim 16S_genes/*_16S.fasta
-```
-
-It may be that more than one 16S rRNA gene is predicted, so choose one copy per species for the subsequent steps. Save the chosen copies in one file named ```16S_genes/all_species_16S.fasta``` (example command below). An example file is given in this repository.  
-
-```
 cat 16S_genes/*_16S.fasta > 16S_genes/all_species_16S.fasta
 ```
 
