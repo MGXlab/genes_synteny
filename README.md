@@ -156,20 +156,21 @@ git clone https://github.com/MGXlab/genes_synteny.git
 cd genes_synteny
 ```
 
-To create a phylogenetic tree of your species of interest, start with extracting 16S rRNA genes from the genomes of the bacteria using Barrnap. This can be done with script ```scripts/barrnap.sh```, which uses as input all .fna files of folder ```genomes/*fna```. It outputs GFF and FASTA files such as ```16S_genes/UW101.gff``` and ```16S_genes/UW101_16S.fasta```. It also uses BEDtools getfasta to extract the FASTA sequences (the output of Barrnap is GFF files with coordinates):
+To create a phylogenetic tree of your species of interest, start with extracting 16S rRNA genes from the genomes of the bacteria using Barrnap. This can be done with script ```scripts/barrnap.sh```, which uses as input all .fna files of folder ```genomes/*fna```. It outputs GFF and FASTA files such as ```16S_genes/UW101.gff``` and ```16S_genes/UW101_16S.fasta```. BEDtools getfasta is used after Barrnap to extract the FASTA sequences (the output of Barrnap is GFF files with coordinates):
 
 ```
-#Run Barrnap for all files and get GFF and FASTA files
+#Run Barrnap and BED tools getfasta for all genomes and get GFF and FASTA files
 bash scripts/barrnap.sh
 ```
 
-It may be that more than one 16S rRNA gene is predicted in the GFF, so choose one copy per species for the subsequent steps. Chose the best candidate based on the GFF file and keep only this sequence in the FASTA file
-Save the chosen copies in one file named ```16S_genes/all_species_16S.fasta``` (example command below). An example file is given in this repository.  
+It may be that more than one 16S rRNA gene is predicted in the GFF, so choose one copy per species for the subsequent steps. Chose the best candidate based on the GFF file and keep only this sequence in the FASTA file. Afterwards, save the chosen copies in one file named ```16S_genes/all_species_16S.fasta``` (this file is given as an example in this repository).  
 
 ```
+#Inspect the GFF coordinates, chose one copy of the 16S rRNA per species
 cat 16S_genes/*gff
-#Change files by hand to choose one copy of each species' 16S gene based on results of the GFF files. Example below: open and modify files with vim
+#Change files by hand to keep only one copy of the 16S sequence per species. Example below: open and modify files with vim
 vim 16S_genes/*_16S.fasta
+#Save the chosen copies in one file
 cat 16S_genes/*_16S.fasta > 16S_genes/all_species_16S.fasta
 ```
 
