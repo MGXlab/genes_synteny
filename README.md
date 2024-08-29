@@ -34,12 +34,32 @@ For final touches:
 
 # Synteny and homology figure
 
-To start, log in to draco, if you are part of the VEO group, and allocate a node to work on. If you are not part of the VEO group, adapt the commands to your needs.   
+If you are part of the VEO group, log in to draco and allocate a node to work on. 
 
 ```
 ssh <fsu_id>@login2.draco.uni-jena.de
 salloc --partition=standard 
 ```
+
+If you are not part of the VEO group, adapt the following scripts to your needs: ```prodigal.sh```, ```barrnap.sh```, ```blast.sh``` and ```iqtree.sbatch```. As an example, below is the content of ```prodigal.sh``` (all located in folder ```scripts```). You only have to change the command line to run Prodigal. All other lines can remain the same and will work in your system.
+
+```
+#!/bin/bash
+
+# Loop over each .fna file 
+for file in genomes/*.fna; do
+
+  # Extract the base name of the file (remove the .fna extension)
+  base_name=$(basename "$file" .fna)
+  
+  echo "$base_name"
+
+  # Run Prodigal with the specified options
+  /home/groups/VEO/tools/prodigal/v2.6.3/prodigal -i "$file" -o proteins/"${base_name}.gff" -f gff -a proteins/"${base_name}.fasta"
+done
+```
+
+
 
 Clone this repository and move to the repository folder:
 
@@ -128,6 +148,19 @@ Now you can visualize the synteny and homology with gggenomes in RStudio using s
 </p>
 
 # Taxonomy tree
+
+First, log in to draco, if you are part of the VEO group, and allocate a node to work on. If you are not part of the VEO group, adapt the commands to your needs.   
+```
+ssh <fsu_id>@login2.draco.uni-jena.de
+salloc --partition=standard 
+```
+
+Clone this repository, if you have not done this yet, and move to the repository folder:
+
+```
+git clone https://github.com/MGXlab/genes_synteny.git
+cd genes_synteny
+```
 
 To create a taxonomy tree of your species of interest, you start with extracting 16S rRNA genes from the genomes of the bacteria using Barrnap. This can be done with script ```scripts/barrnap.sh```, which also uses BEDtools getfasta to extract the FASTA sequences (the output of Barrnap is GFF files with coordinates):
 
