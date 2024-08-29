@@ -112,7 +112,9 @@ python3 scripts/get_coordinates.py proteins/UW101.blastoutbest proteins/UW101.gf
 bash scripts/get_coordinates.sh > objects/alv_genes1.csv
 ```
 
-After this point, you produced file ```objects/alv_genes1.csv```, which is all you need to work locally. Log out of draco and work locally. Clone the repository locally and move to the ```scripts``` folder. Next, open jupyter notebook ```get_objects.ipynb```.   
+At this point, you produced file ```objects/alv_genes1.csv```, which is all you need for subsequent steps. Log out of draco and work locally. Note that ```objects/alv_genes1.csv``` is formatted to be compatible to gggenomes. If you have gene coordinates in another format, such as GenBank, you should convert it to GFF (for this you could use this [code](https://github.com/jorvis/biocode/blob/master/gff/convert_genbank_to_gff3.py)). For more information on gggenomes file formats, consult the [gggenomes webpage](https://thackl.github.io/gggenomes/articles/emales.html).   
+
+Clone the repository locally and move to the ```scripts``` folder. Next, open jupyter notebook ```get_objects.ipynb```.   
 
 ```
 git clone https://github.com/MGXlab/genes_synteny.git
