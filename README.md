@@ -41,7 +41,7 @@ ssh <fsu_id>@login2.draco.uni-jena.de
 salloc --partition=standard 
 ```
 
-If you are not part of the VEO group, adapt the following scripts to your needs: ```prodigal.sh``` and ```blast.sh```. As an example, below is the content of ```prodigal.sh``` (all located in folder ```scripts```). You only have to change the command line to run Prodigal. All other lines can remain the same and will work in your system.
+If you are not part of the VEO group, adapt scripts ```scripts/prodigal.sh``` and ```scripts/blast.sh``` to your needs. As an example, below is the content of ```scripts/prodigal.sh```. You only have to change the command line to run Prodigal. All other lines can remain the same and will work in your system.
 
 ```
 #!/bin/bash
@@ -147,7 +147,7 @@ Now you can visualize the synteny and homology with gggenomes in RStudio using s
 
 # Phylogenetic tree
 
-As explained above in section "Synteny and homology figure", log in to draco, if you are part of the VEO group, and allocate a node to work on. If you are not part of the VEO group, adapt scripts ```barrnap.sh``` and ```iqtree.sbatch``` to your needs.   
+As explained above in section "Synteny and homology figure", log in to draco, if you are part of the VEO group, and allocate a node to work on. If you are not part of the VEO group, adapt scripts ```scripts/barrnap.sh``` and ```scripts/iqtree.sbatch``` to your needs.   
 
 Clone this repository, if you have not done this yet, and move to the repository folder:   
 
