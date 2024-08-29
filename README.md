@@ -21,7 +21,7 @@ For synteny and homology figure:
 - [python3](https://www.python.org/downloads/) 
 - [Jupyter notebook](https://jupyter.org/install)
   
-To create a taxonomy tree:
+To create a phylogenetic tree:
 
 - [Barrnap](https://github.com/tseemann/barrnap)
 - [BEDtools](https://bedtools.readthedocs.io/en/latest/index.html)
@@ -183,6 +183,6 @@ The next step is to align the 16S rRNA genes with MAFFT and produce the phylogen
 /home/groups/VEO/tools/iqtree/1.6.12/bin/iqtree -s 16S_gene/all_16S.alg
 ```
 
-iqtree produces a taxonomy tree in Newick format (```16S_genes/species.treefile```), which you could visualize in RStudio (script ```scripts/synteny.r```) or alternatively in the online tool [iToL](https://itol.embl.de/) (click tab on the top "Upload" and input your Newick file).   
+iqtree produces a phylogenetic tree in Newick format (```16S_genes/species.treefile```, given as an example in this repository), which you could visualize in RStudio (script ```scripts/synteny.r```) or alternatively in the online tool [iToL](https://itol.embl.de/) (click tab on the top "Upload" and input your Newick file).   
 
 Any final touches to the figure can be done using Inkscape.  
