@@ -156,22 +156,22 @@ git clone https://github.com/MGXlab/genes_synteny.git
 cd genes_synteny
 ```
 
-To create a phylogenetic tree of your species of interest, start with extracting 16S rRNA genes from the genomes of the bacteria using Barrnap. This can be done with script ```scripts/barrnap.sh```, which also uses BEDtools getfasta to extract the FASTA sequences (the output of Barrnap is GFF files with coordinates):
+To create a phylogenetic tree of your species of interest, start with extracting 16S rRNA genes from the genomes of the bacteria using Barrnap. This can be done with script ```scripts/barrnap.sh```, which uses as input all .fna files of folder ```genomes/*fna```. It also uses BEDtools getfasta to extract the FASTA sequences (the output of Barrnap is GFF files with coordinates):
 
 ```
 #Run Barrnap for all files
 bash scripts/barrnap.sh
-#Change files by hand to choose one copy of each species' 16S genes
+#Change files by hand to choose one copy of each species' 16S gene. Example below: open and modify files with vim
 vim 16S_genes/*_16S.fasta
 ```
 
-It may be that more than one 16S rRNA gene is predicted, so you should choose one copy for the subsequent steps. Concatenate all 16S files for the individual species using the bash command below:
+It may be that more than one 16S rRNA gene is predicted, so choose one copy per species for the subsequent steps. Save the chosen copies in one file named ```16S_genes/all_species_16S.fasta``` (example command below). An example file is given in this repository.  
 
 ```
-cat 16S_genes/*fasta > 16S_genes/all_species_16S.fasta
+cat 16S_genes/*_16S.fasta > 16S_genes/all_species_16S.fasta
 ```
 
-The next step is to align the 16S rRNA genes with MAFFT using the command below. The command for iqtree is also given below.
+The next step is to align the 16S rRNA genes with MAFFT and produce the phylogenetic tree with iqtree using the commands below (adapt them if needed). 
 
 ```
 /home/groups/VEO/tools/mafft/v7.505/bin/mafft all_16S.fasta > all_16S.alg
@@ -180,4 +180,4 @@ The next step is to align the 16S rRNA genes with MAFFT using the command below.
 
 iqtree produces a taxonomy tree in Newick format (16S_genes/species.treefile), which you could visualize in RStudio (script ```scripts/synteny.r```) or alternatively in the online tool [iToL](https://itol.embl.de/).   
 
-Any final touches to the figures can be done using Inkscape.
+Any final touches to the figures can be done using Inkscape.  
